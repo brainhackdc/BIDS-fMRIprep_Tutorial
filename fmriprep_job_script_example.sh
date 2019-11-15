@@ -1,5 +1,6 @@
 #!/bin/bash
-# This is an example of a job script that runs fmriprep on a single subject using a singularity container. The following lines are parameters for SLURM, which is a job scheduling software:
+# This is an example of a job script that runs fmriprep on a single subject using a singularity container. 
+# The following lines are parameters for SLURM, which is a job scheduling software. -junaid
 #SBATCH --time=168:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=6
