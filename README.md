@@ -5,7 +5,7 @@ This repository contains all the materials for the tutorial on BIDS/fMRIprep, an
 
 CHALLENGE 1 - BIDS Conversion: 
 
-A) Download the zipped dicoms folder (and unzip) from this link (~2 GB): https://drive.google.com/file/d/15TKjVUXSxnCcYjUvB6CLmM_Mm20Xww-E/view?usp=sharing
+A) Download the zipped dicoms folder (and unzip) from this link (~2 GB; I'll give the link during the tur
 Then, download the dcm2niix application, the BidsConvert.sh & BidsConvertParameters.sh scripts from this repo. Now hack the BidsConvertParameters.sh file to match the paths of your machine, and run the script on the dicoms folder you downloaded. Document an errors that arise, and try to fix them. 
 
 B) Use the BIDS validator to see if this converted dataset is BIDS compatible. Are there any errors or warnings? If so, what do they mean. Is this dataset ready for fmriprep? https://bids-standard.github.io/bids-validator/
