@@ -85,7 +85,7 @@ for s in ${SubID[@]}; do
 		if [ $(find $DcmDir/$s -type d -name *$funcD* | wc -l) -gt 1 ]; then
 			echo "Attention: there is more than one directory for $funcD , please check!"
 			echo "Using the last directory for now..."
-			indir=$(ls -d $DcmDir/$s/*/*$funcD | tail -1)
+			indir=$(ls -d $DcmDir/$s/*/*$funcD* | tail -1)
 			echo $indir
 		fi
 		#
