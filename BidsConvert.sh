@@ -76,16 +76,16 @@ for s in ${SubID[@]}; do
 		#
 		# Get input directory by searching the subject dicom folder for the
 		# current functional.
-		indir=$(find $DcmDir/$s -type d -name *$funcD*)
+		indir=$(find $DcmDir/$s -type d -name '*$funcD*')
 		#
 		# Check to see if there was only one directory of that name. If there
 		# are multiple folders, select the last one and send message.
 		# Note that if a functional is suppposed to have more than one run, make
 		# sure to indicate that in the parameters file.
-		if [ $(find $DcmDir/$s -type d -name *$funcD* | wc -l) -gt 1 ]; then
+		if [ $(find $DcmDir/$s -type d -name '*$funcD*' | wc -l) -gt 1 ]; then
 			echo "Attention: there is more than one directory for $funcD , please check!"
 			echo "Using the last directory for now..."
-			indir=$(ls -d $DcmDir/$s/*/*$funcD* | tail -1)
+			indir=$(find $DcmDir/$s -type d -name '*$funcD*' | xargs ls | tail -1)
 			echo $indir
 		fi
 		#
@@ -105,14 +105,14 @@ for s in ${SubID[@]}; do
 	#
 	# Get input directory by searching the subject dicom folder for the
 	# structural. It's currently set up only for one structural.
-	indir=$(find $DcmDir/$s -type d -name *$StrctDcms*)
+	indir=$(find $DcmDir/$s -type d -name '*$StrctDcms*')
 	#
 	# Check to see if there was only one directory of that name. If there
 	# are multiple folders, select the last one and send message.
-	if [ $(find $DcmDir/$s -type d -name *$StrctDcms* | wc -l) -gt 1 ]; then
+	if [ $(find $DcmDir/$s -type d -name '*$StrctDcms*' | wc -l) -gt 1 ]; then
 		echo "Attention: there is more than one directory for $StrctDcms , please check!"
 		echo "Using the last directory for now..."
-		indir=$(ls -d $DcmDir/$s/*/*$StrctDcms* | tail -1)
+		indir=$(find $DcmDir/$s -type d -name '*$StrctDcms*' | xargs ls | tail -1)
 	fi
 	#
 	# Convert MPRAGE and label with '_T1w' as per BIDS specification.
@@ -131,14 +131,14 @@ for s in ${SubID[@]}; do
     echo "-- fmap/${Cur}"
 		#
 		# Get input directory by searching the subject dicom folder for fmap.
-		indir=$(find $DcmDir/$s -type d -name *$f*)
+		indir=$(find $DcmDir/$s -type d -name '*$f*')
 		#
 		# Check to see if there was only one directory. If there are multiple
 		# folders, select the last one and send message.
-		if [ $(find $DcmDir/$s -type d -name *$f* | wc -l) -gt 1 ]; then
+		if [ $(find $DcmDir/$s -type d -name '*$f*' | wc -l) -gt 1 ]; then
 			echo "Attention: there is more than one directory for $f , please check!"
 			echo "Using the last directory for now..."
-			indir=$(ls -d $DcmDir/$s/*/*$f* | tail -1)
+			indir=$(find $DcmDir/$s -type d -name '*$f*' | xargs ls | tail -1)
 		fi
 		#
 		# Convert MPRAGE and label with '_T1w' as per BIDS specification.
